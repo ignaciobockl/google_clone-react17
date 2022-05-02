@@ -15,7 +15,7 @@ export const ResultContextProvider = ({ children }) => {
 
     const [ results, setResults ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(false);
-    const [ searchTerm, setSearchTerm ] = useState('');
+    const [ searchTerm, setSearchTerm ] = useState('Javascript');
 
     // type: /videos /search /images
     const getResults = async ( type ) => {
@@ -28,7 +28,7 @@ export const ResultContextProvider = ({ children }) => {
                 method: 'GET',
                 headers: {
                     'X-User-Agent': xUserAgent,
-                    'X-Proxy-Location': proxyLocation,
+                    // 'X-Proxy-Location': proxyLocation,
                     'X-RapidAPI-Host': host,
                     'X-RapidAPI-Key': key
                 }
@@ -36,7 +36,14 @@ export const ResultContextProvider = ({ children }) => {
 
             const data  = await resp.json();
 
-            setResults( data );
+            if ( type.includes('/news') ) {
+                setResults(data.entries);
+            } else if ( type.includes('/image') ) {
+                setResults(data.image_results);
+            } else {
+                setResults(data.results);
+            }
+
             setIsLoading( false );
 
         } catch (error) {
