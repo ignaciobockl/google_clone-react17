@@ -15,7 +15,7 @@ export const ResultContextProvider = ({ children }) => {
 
     const [ results, setResults ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(false);
-    const [ searchTerm, setSearchTerm ] = useState('Javascript');
+    const [ searchTerm, setSearchTerm ] = useState('React 18');
 
     // type: /videos /search /images
     const getResults = async ( type ) => {
