@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 
 const xUserAgent = process.env.REACT_APP_RAPID_API_GOOGLESEARCH_USERAGENT;
-const proxyLocation = process.env.REACT_APP_RAPID_API_GOOGLESEARCH_PROXYLOCATION;
+// const proxyLocation = process.env.REACT_APP_RAPID_API_GOOGLESEARCH_PROXYLOCATION;
 const host = process.env.REACT_APP_RAPID_API_GOOGLESEARCH_HOST;
 const key = process.env.REACT_APP_RAPID_API_GOOGLESEARCH_KEY;
 
@@ -15,7 +15,7 @@ export const ResultContextProvider = ({ children }) => {
 
     const [ results, setResults ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(false);
-    const [ searchTerm, setSearchTerm ] = useState('React 18');
+    const [ searchTerm, setSearchTerm ] = useState('');
 
     // type: /videos /search /images
     const getResults = async ( type ) => {
